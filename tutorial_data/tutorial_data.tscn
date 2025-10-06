@@ -1,6 +1,6 @@
 [gd_scene load_steps=91 format=3 uid="uid://djm3xhbwc3sdy"]
 
-[ext_resource type="Script" path="res://tutorial_data/tutorial_data.gd" id="1_6yh76"]
+[ext_resource type="Script" uid="uid://c18ycsx1bcftj" path="res://tutorial_data/tutorial_data.gd" id="1_6yh76"]
 [ext_resource type="Texture2D" uid="uid://clyo1m7s3gnr5" path="res://graphics/objects/lights/lights.png" id="2_yvp8s"]
 [ext_resource type="Texture2D" uid="uid://cmwd72moguyks" path="res://graphics/objects/lights/l0.png" id="3_26401"]
 [ext_resource type="Texture2D" uid="uid://b56avn3qy7w36" path="res://graphics/objects/lights/l2.png" id="4_0nh5f"]
@@ -485,31 +485,31 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lceto"]
 _data = {
-"RESET": SubResource("Animation_mbmsh"),
-"ak_down": SubResource("Animation_e4siy"),
-"ak_down_left": SubResource("Animation_orgna"),
-"ak_down_right": SubResource("Animation_gie54"),
-"ak_left": SubResource("Animation_6tkis"),
-"ak_right": SubResource("Animation_r5lnm"),
-"ak_up": SubResource("Animation_tmj54"),
-"ak_up_left": SubResource("Animation_wijbe"),
-"ak_up_right": SubResource("Animation_bw47a"),
-"ro_down": SubResource("Animation_mtrda"),
-"ro_down_left": SubResource("Animation_rhgje"),
-"ro_down_right": SubResource("Animation_fjeqs"),
-"ro_left": SubResource("Animation_2w84t"),
-"ro_right": SubResource("Animation_6grd4"),
-"ro_up": SubResource("Animation_3wshq"),
-"ro_up_left": SubResource("Animation_3rytx"),
-"ro_up_right": SubResource("Animation_bpcos"),
-"sg_down": SubResource("Animation_816fe"),
-"sg_down_left": SubResource("Animation_2dngi"),
-"sg_down_right": SubResource("Animation_dj3ai"),
-"sg_left": SubResource("Animation_ii8bw"),
-"sg_right": SubResource("Animation_xemw8"),
-"sg_up": SubResource("Animation_5egif"),
-"sg_up_left": SubResource("Animation_3543t"),
-"sg_up_right": SubResource("Animation_nervo")
+&"RESET": SubResource("Animation_mbmsh"),
+&"ak_down": SubResource("Animation_e4siy"),
+&"ak_down_left": SubResource("Animation_orgna"),
+&"ak_down_right": SubResource("Animation_gie54"),
+&"ak_left": SubResource("Animation_6tkis"),
+&"ak_right": SubResource("Animation_r5lnm"),
+&"ak_up": SubResource("Animation_tmj54"),
+&"ak_up_left": SubResource("Animation_wijbe"),
+&"ak_up_right": SubResource("Animation_bw47a"),
+&"ro_down": SubResource("Animation_mtrda"),
+&"ro_down_left": SubResource("Animation_rhgje"),
+&"ro_down_right": SubResource("Animation_fjeqs"),
+&"ro_left": SubResource("Animation_2w84t"),
+&"ro_right": SubResource("Animation_6grd4"),
+&"ro_up": SubResource("Animation_3wshq"),
+&"ro_up_left": SubResource("Animation_3rytx"),
+&"ro_up_right": SubResource("Animation_bpcos"),
+&"sg_down": SubResource("Animation_816fe"),
+&"sg_down_left": SubResource("Animation_2dngi"),
+&"sg_down_right": SubResource("Animation_dj3ai"),
+&"sg_left": SubResource("Animation_ii8bw"),
+&"sg_right": SubResource("Animation_xemw8"),
+&"sg_up": SubResource("Animation_5egif"),
+&"sg_up_left": SubResource("Animation_3543t"),
+&"sg_up_right": SubResource("Animation_nervo")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l08yx"]
@@ -801,13 +801,13 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2jh2u"]
 _data = {
-"RESET": SubResource("Animation_33o1u"),
-"death": SubResource("Animation_a6ppx"),
-"idle": SubResource("Animation_et8yq"),
-"run": SubResource("Animation_eidb3"),
-"shoot_down": SubResource("Animation_oivfl"),
-"shoot_right": SubResource("Animation_de0yc"),
-"shoot_up": SubResource("Animation_4aw3s")
+&"RESET": SubResource("Animation_33o1u"),
+&"death": SubResource("Animation_a6ppx"),
+&"idle": SubResource("Animation_et8yq"),
+&"run": SubResource("Animation_eidb3"),
+&"shoot_down": SubResource("Animation_oivfl"),
+&"shoot_right": SubResource("Animation_de0yc"),
+&"shoot_up": SubResource("Animation_4aw3s")
 }
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lrnvm"]
@@ -897,8 +897,10 @@ texture = ExtResource("5_wbvyd")
 
 [node name="Legs" type="AnimatedSprite2D" parent="PlayerAnimation"]
 sprite_frames = SubResource("SpriteFrames_lopsr")
-animation = &"duck"
+animation = &"run"
 autoplay = "idle"
+frame = 5
+frame_progress = 0.056791402
 
 [node name="Torso" type="Sprite2D" parent="PlayerAnimation"]
 texture = ExtResource("6_otyd2")
@@ -907,7 +909,7 @@ vframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerAnimation"]
 libraries = {
-"": SubResource("AnimationLibrary_lceto")
+&"": SubResource("AnimationLibrary_lceto")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="PlayerAnimation"]
@@ -919,10 +921,11 @@ parameters/Shotgun/blend_position = Vector2(0, 0)
 script = SubResource("GDScript_vlm3b")
 
 [node name="SoldierAnimation" type="Node2D" parent="."]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SoldierAnimation"]
 libraries = {
-"": SubResource("AnimationLibrary_2jh2u")
+&"": SubResource("AnimationLibrary_2jh2u")
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="SoldierAnimation"]

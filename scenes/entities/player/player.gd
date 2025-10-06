@@ -12,6 +12,7 @@ var direction := Vector2.ZERO
 var can_move := true
 var dash = false
 var ducking = false
+var on_wall = false
 
 @export_group("Jump")
 @export var jump_strength := 300
@@ -21,6 +22,12 @@ var jump := false
 var faster_fall := false
 var gravity_multiplier := 1.0
 
+@export_group("Gun")
+@export var crosshair_distance := 20
+var aim_direction := Vector2.RIGHT
+var gamepad_active = true
+const crosshair_y_offset = 6
+
 func _ready():
 	$Timers/DashCooldown.wait_time = dash_cooldown
 
@@ -29,7 +36,11 @@ func _process(delta: float) -> void:
 	if can_move:
 		get_input()
 		apply_movement(delta)
-		
+		animate()
+
+func animate():
+	$Crosshair.update(aim_direction, crosshair_distance, ducking)
+
 func get_input():
 	# Horizontal input
 	direction.x = Input.get_axis("left", "right")
@@ -54,7 +65,20 @@ func get_input():
 		ducking = true
 	else:
 		ducking = false
-	
+		
+	# Aim input
+	var aim_input_gamepad = Input.get_vector("aim_left","aim_right","aim_up","aim_down")
+	var aim_input_mouse = get_local_mouse_position().normalized()
+	var aim_input = aim_input_gamepad if gamepad_active else aim_input_mouse
+	if aim_input.length() > 0.5:
+		aim_direction = Vector2(round(aim_input.x), round(aim_input.y))
+
+func _input(event):
+	if event is InputEventMouseMotion:
+		gamepad_active = false
+	if Input.get_vector("aim_left","aim_right","aim_up","aim_down"):
+		gamepad_active = true 
+
 func apply_movement(delta):
 	# Horizontal movement
 	if direction.x and not ducking:
@@ -70,7 +94,7 @@ func apply_movement(delta):
 	var was_on_floor = is_on_floor()
 	move_and_slide() ## Apply physics
 	if was_on_floor and not is_on_floor() and velocity.y >= 0:
-		$Timers/Coyote.start()	
+		$Timers/Coyote.start()
 	
 	# Dash movement
 	if dash:
@@ -82,9 +106,13 @@ func apply_movement(delta):
 	
 	if is_on_wall_only():
 		gravity_multiplier = 0.5
+		on_wall = true
+		
 	
-	if not is_on_wall_only() and not velocity.x:
+	if not is_on_wall() and on_wall:
+		$Timers/Coyote.start()
 		gravity_multiplier = 1
+		on_wall = false
 		
 func on_dash_finished():
 	velocity.x = move_toward(velocity.x, 0, 500)

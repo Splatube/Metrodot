@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://coa78sxepphhw" path="res://scenes/levels/level.tscn" id="1_nj735"]
 [ext_resource type="TileSet" uid="uid://c1s3xfgccd2py" path="res://scenes/levels/level.tres" id="2_1kl32"]
-[ext_resource type="PackedScene" uid="uid://b75j88f5sx25w" path="res://scenes/entities/player.tscn" id="3_7ab4q"]
+[ext_resource type="PackedScene" uid="uid://b75j88f5sx25w" path="res://scenes/entities/player/player.tscn" id="3_7ab4q"]
 
 [node name="Station" instance=ExtResource("1_nj735")]
 
