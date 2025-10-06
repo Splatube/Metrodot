@@ -2,37 +2,35 @@
 
 [ext_resource type="PackedScene" uid="uid://bc70622jh8wgw" path="res://scenes/entities/entity.tscn" id="1_3xfb3"]
 [ext_resource type="Script" uid="uid://dk2qfenkxhdl7" path="res://scenes/entities/player/player.gd" id="2_yrl14"]
-[ext_resource type="Texture2D" uid="uid://clj8oukjdj40h" path="res://graphics/entities/bradley.png" id="3_1ie0h"]
 [ext_resource type="Texture2D" uid="uid://clgaqns85oxlp" path="res://graphics/guns/crosshair.png" id="4_42nxq"]
 [ext_resource type="Script" uid="uid://c76ehumuwwp8d" path="res://scenes/entities/player/crosshair.gd" id="5_5u6hq"]
+[ext_resource type="PackedScene" uid="uid://jsfxilwj6msr" path="res://scenes/entities/player/player_graphics.tscn" id="6_bj7e2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1ie0h"]
-radius = 15.301142
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1murt"]
+radius = 3.7499995
+height = 29.999998
 
 [node name="Player" instance=ExtResource("1_3xfb3")]
+position = Vector2(0, 4.999999)
 scale = Vector2(0.8, 0.8)
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("2_yrl14")
 dash_strength = 500
 dash_cooldown = 0.75
+metadata/_edit_vertical_guides_ = [-17.0]
+metadata/_edit_horizontal_guides_ = [16.0]
 
 [node name="Collision" parent="." index="0"]
-position = Vector2(0, -1.25)
-shape = SubResource("CircleShape2D_1ie0h")
+position = Vector2(0, -1.9073486e-06)
+shape = SubResource("CapsuleShape2D_1murt")
 
-[node name="Sprite" type="Sprite2D" parent="." index="1"]
-texture_filter = 1
-position = Vector2(1.25, 4.999999)
-scale = Vector2(0.75, 0.75)
-texture = ExtResource("3_1ie0h")
-
-[node name="Camera" type="Camera2D" parent="." index="2"]
-position = Vector2(1, 0)
+[node name="Camera" type="Camera2D" parent="." index="1"]
+position = Vector2(1, -6.25)
 zoom = Vector2(5, 5)
 
-[node name="Timers" parent="." index="3"]
-position = Vector2(0, 4)
+[node name="Timers" parent="." index="2"]
+position = Vector2(0, -2.25)
 
 [node name="Coyote" type="Timer" parent="Timers" index="0"]
 wait_time = 0.15
@@ -45,7 +43,11 @@ one_shot = true
 [node name="DashCooldown" type="Timer" parent="Timers" index="2"]
 one_shot = true
 
+[node name="Sprite" parent="." index="3" instance=ExtResource("6_bj7e2")]
+position = Vector2(2.2737368e-13, -7.5)
+
 [node name="Crosshair" type="Sprite2D" parent="." index="4"]
-scale = Vector2(0.25, 0.25)
+position = Vector2(0, -4.999999)
+scale = Vector2(0.24999999, 0.24999999)
 texture = ExtResource("4_42nxq")
 script = ExtResource("5_5u6hq")

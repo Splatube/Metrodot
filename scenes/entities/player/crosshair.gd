@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@onready var y_offset = get_parent().crosshair_y_offset
+@onready var y_offset = get_parent().y_offset
 
 func update(direction, distance, ducking):
 	var duck_offset = y_offset if ducking else 0

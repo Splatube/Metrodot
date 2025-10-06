@@ -26,7 +26,7 @@ var gravity_multiplier := 1.0
 @export var crosshair_distance := 20
 var aim_direction := Vector2.RIGHT
 var gamepad_active = true
-const crosshair_y_offset = 6
+const y_offset = 6
 
 func _ready():
 	$Timers/DashCooldown.wait_time = dash_cooldown
@@ -40,6 +40,8 @@ func _process(delta: float) -> void:
 
 func animate():
 	$Crosshair.update(aim_direction, crosshair_distance, ducking)
+	$Sprite.update_legs(direction, is_on_floor(), ducking)
+	$Sprite.update_torso(aim_direction, ducking, 0)
 
 func get_input():
 	# Horizontal input
