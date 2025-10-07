@@ -15,8 +15,11 @@ func update_legs(direction, on_floor, ducking):
 		state = 'jump'
 	$Legs.animation = state
 	
-func update_torso(direction, ducking, _current_gun):
+func update_torso(direction, ducking, current_gun):
+	
 	# Ducking
 	$Torso.position.y = y_offset if ducking else 0
-	
+	$AnimationTree.selected_gun = current_gun
 	$AnimationTree['parameters/AK/blend_position'] = direction
+	$AnimationTree['parameters/Shotgun/blend_position'] = direction
+	$AnimationTree['parameters/Rocket/blend_position'] = direction
