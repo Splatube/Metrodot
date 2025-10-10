@@ -8,30 +8,39 @@
 
 [node name="Light" type="Node2D"]
 script = ExtResource("1_cv2yc")
+color = Color(0, 0.34976864, 1, 1)
+strength = 10.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -43.0
+offset_top = -21.0
+offset_right = 64.0
+offset_bottom = 69.0
+color = Color(0.48178947, 0.48178947, 0.48178947, 1)
 
 [node name="Options" type="Node2D" parent="."]
 
 [node name="0" type="Node2D" parent="Options"]
-visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Options/0"]
+[node name="Sprite" type="Sprite2D" parent="Options/0"]
 texture = ExtResource("2_x45sk")
 hframes = 6
 
-[node name="PointLight2D" type="PointLight2D" parent="Options/0"]
+[node name="PointLight" type="PointLight2D" parent="Options/0"]
 position = Vector2(0, 45)
-energy = 0.804031
+color = Color(0, 0.34976864, 1, 1)
+energy = 10.0
 texture = ExtResource("3_dypoi")
 
 [node name="1" type="Node2D" parent="Options"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Options/1"]
+[node name="Sprite" type="Sprite2D" parent="Options/1"]
 texture = ExtResource("2_x45sk")
 hframes = 6
 frame = 1
 
-[node name="PointLight2D" type="PointLight2D" parent="Options/1"]
+[node name="PointLight" type="PointLight2D" parent="Options/1"]
 position = Vector2(0, 29)
 scale = Vector2(0.25, 1)
 texture = ExtResource("3_dypoi")
@@ -39,48 +48,48 @@ texture = ExtResource("3_dypoi")
 [node name="2" type="Node2D" parent="Options"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Options/2"]
+[node name="Sprite" type="Sprite2D" parent="Options/2"]
 texture = ExtResource("2_x45sk")
 hframes = 6
 frame = 2
 
-[node name="PointLight2D" type="PointLight2D" parent="Options/2"]
+[node name="PointLight" type="PointLight2D" parent="Options/2"]
 position = Vector2(0, 1)
 texture = ExtResource("4_jrt8r")
 
 [node name="3" type="Node2D" parent="Options"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Options/3"]
+[node name="Sprite" type="Sprite2D" parent="Options/3"]
 texture = ExtResource("2_x45sk")
 hframes = 6
 frame = 3
 
-[node name="PointLight2D" type="PointLight2D" parent="Options/3"]
+[node name="PointLight" type="PointLight2D" parent="Options/3"]
 position = Vector2(0, 1)
 texture = ExtResource("5_therv")
 
 [node name="4" type="Node2D" parent="Options"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Options/4"]
+[node name="Sprite" type="Sprite2D" parent="Options/4"]
 texture = ExtResource("2_x45sk")
 hframes = 6
 frame = 4
 
-[node name="PointLight2D" type="PointLight2D" parent="Options/4"]
+[node name="PointLight" type="PointLight2D" parent="Options/4"]
 position = Vector2(0, 4)
 texture = ExtResource("5_therv")
 
 [node name="5" type="Node2D" parent="Options"]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Options/5"]
+[node name="Sprite" type="Sprite2D" parent="Options/5"]
 texture = ExtResource("2_x45sk")
 hframes = 6
 frame = 5
 
-[node name="PointLight2D" type="PointLight2D" parent="Options/5"]
+[node name="PointLight" type="PointLight2D" parent="Options/5"]
 position = Vector2(0, 4)
 energy = 0.897673
 texture = ExtResource("5_therv")
